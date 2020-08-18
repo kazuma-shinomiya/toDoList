@@ -1,0 +1,50 @@
+@charset "utf-8";
+/*ボタンの見た目を整える*/
+.button {  
+  cursor: pointer; /*[POINT] 指マークのカーソル*/  
+  width :100px; /*横幅200px*/  
+  height: 50px; /*縦幅50px*/  
+  font-size: 50px; /*文字を少し大きくする*/  
+  text-align: center; /*テキスト中央寄せ(横)*/    
+  line-height: 40px;
+  margin: 20px auto 0px; /*上に20px,左右中央寄せ,下に0pxの余白*/  
+  border: 1px solid #000; /*黒1pxの実線で縁を作る*/  
+  box-shadow: 3px 3px rgba(0,0,0,0.4);/*ちょっと影をつけて立体感を出す*/  
+  border-radius: 5px; /*ちょっと角を丸くする*/
+}
+/*ボタンのクリックイベント*//*ボタンを押してるっぽい動きをつける*/
+.button:active{  
+  transform: translateY(3px);/*影の分だけ下にずらす*/  
+  box-shadow: 0px 0px;/*影をなくす*/
+}
+  /*マスクを作成する*/
+#mask {  
+  background: rgba(0,0,0,0.4);/*[POINT]背景を40％の濃さで透過する*/  /*[POINT]画面全体を覆うようにする*/  /*[POINT]絶対位置で指定し、上下左右0距離から描画を始めることで画面全体に適用できる*/  
+  position:fixed;/*絶対位置を指定*/  
+  top: 0;/*上に0距離から描画を始める*/  
+  bottom: 0;/*下に0距離から描画を始める*/  
+  right: 0;/*右に0距離から描画を始める*/  
+  left: 0;/*左に0距離から描画を始める*/  
+  z-index: 1;
+}
+/*モーダル画面*/
+#modal {  
+  background: #fff;/*背景は白*/  
+  width: 300px; /*横幅を指定*/  
+  position:absolute;/*絶対位置を指定(スクロールで動く)*/  
+  top:40px;/*縦に40pxの位置から描画*/  
+  right: 0px;/*右に0距離から描画を始める*/  
+  left:0px;/*左に0距離から描画を始める*/  
+  margin:0 auto; /*左右中央寄せ*/  
+  padding: 20px;/*内側に余白*/  
+  border-radius: 5px; /*ちょっと角を丸くする*/  
+  border: 1px solid black; /*黒1px実線で縁取り*/  
+  z-index: 2;  
+  transition: 0.8s /*[POINT]0.8秒かけて移動させる(アニメーション)*/
+}
+#mask.hidden{  
+  display:none; /*非表示にする*/
+}
+#modal.hidden{  
+  transform: translate(0px,-500px);/*[POINT]マイナス方向に動かして画面外に飛ばしておく*/
+}
